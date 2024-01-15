@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список стран</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <div class="cc">
+        <div class="country-container" th:each="country : ${countries}">
+            <div class="country-card">
+                <img class="img" th:src="${country.imageUrl}" alt="Country Image"/>
+                <h2 th:text="${country.name}"></h2>
+                <h3 th:text="${country.capital}"></h3>
+                <p th:text="${country.description}"></p>
+                <table class="city-table" border="1">
+                    <tr>
+                        <th>Город</th>
+                        <th>Население</th>
+                    </tr>
+                    <tr th:each="city : ${country.cities}">
+                        <td th:text="${city.name}"></td>
+                        <td th:text="${city.population}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
